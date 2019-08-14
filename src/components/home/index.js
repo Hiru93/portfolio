@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 //Libraries components
 import { FormattedMessage } from 'react-intl';
+import { Layout, Menu, Breadcrumb, DatePicker, Popover, Timeline, Steps } from 'antd';
 
 //Icons
 
@@ -30,11 +31,88 @@ class Home extends React.Component {
     }
 
     render() {
+
+        const content = (
+            <div>
+                <p>C'ha proprio ragione</p>
+                <p>è un componente per davvero :^)</p>
+                <p><FormattedMessage id='popover.body'>{ txt => <span>{ txt }</span> }</FormattedMessage></p>
+            </div>
+        );
+
         return (
             <React.Fragment>
-                <FormattedMessage id='welcome.message'>
-                    { txt => <span>{ txt }</span> }
-                </FormattedMessage>
+                <Layout className="layout">
+                    <Layout.Header>
+                        <div className="logo" />
+                        <Menu
+                            theme="dark"
+                            mode="horizontal"
+                            defaultSelectedKeys={['2']}
+                            style={{ lineHeight: '64px' }}
+                        >
+                            <Menu.Item key="1">nav 1</Menu.Item>
+                            <Menu.Item key="2">nav 2</Menu.Item>
+                            <Menu.Item key="3">nav 3</Menu.Item>
+                        </Menu>
+                    </Layout.Header>
+                    <Layout.Content style={{ padding: '0 50px' }}>
+                        <Breadcrumb style={{ margin: '16px 0' }}>
+                            <Breadcrumb.Item>Home</Breadcrumb.Item>
+                            <Breadcrumb.Item>List</Breadcrumb.Item>
+                            <Breadcrumb.Item>App</Breadcrumb.Item>
+                        </Breadcrumb>
+                        <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+                            <FormattedMessage id='welcome.message'>
+                                { txt => <span>{ txt }</span> }
+                            </FormattedMessage>
+                            <br />
+                            <br />
+                            <DatePicker onChange={ (date, dateString) => { console.log(`+++ ${ date }, ${ dateString }`) } } />
+                            <br />
+                            <br />
+                            <Popover content={ content } title='Title'>
+                                <DatePicker.RangePicker onChange={ (date, dateString) => { console.log(`*** ${ date }, ${ dateString }`) } } />
+                            </Popover>
+                            <br />
+                            <br />
+                            <Timeline>
+                                <Timeline.Item color='green'>
+                                    <FormattedMessage id='timeline.first'>
+                                        { txt => <span>{ txt }</span> }
+                                    </FormattedMessage>
+                                </Timeline.Item>
+                                <Timeline.Item color='green'>
+                                    <FormattedMessage id='timeline.second'>
+                                        { txt => <span>{ txt }</span> }
+                                    </FormattedMessage>
+                                </Timeline.Item>
+                                <Timeline.Item color='red'>
+                                    <FormattedMessage id='timeline.third'>
+                                        { txt => <span>{ txt }</span> }
+                                    </FormattedMessage>
+                                </Timeline.Item>
+                                <Timeline.Item color='grey'>
+                                    <FormattedMessage id='timeline.fourth'>
+                                        { txt => <span>{ txt }</span> }
+                                    </FormattedMessage>
+                                </Timeline.Item>
+                            </Timeline>
+                            <br />
+                            <Steps current={1}>
+                                <Steps.Step title='First' description={<FormattedMessage id='timeline.first'>{ txt => <span>{ txt }</span> }</FormattedMessage>} />
+                                <Steps.Step title='Second' description={<FormattedMessage id='timeline.second'>{ txt => <span>{ txt }</span> }</FormattedMessage>} />
+                                <Steps.Step title='Third' description={<FormattedMessage id='timeline.third'>{ txt => <span>{ txt }</span> }</FormattedMessage>} />
+                                <Steps.Step title='Fourth' description={<FormattedMessage id='timeline.fourth'>{ txt => <span>{ txt }</span> }</FormattedMessage>} />
+                            </Steps>
+                        </div>
+                    </Layout.Content>
+                    <Layout.Footer style={{ textAlign: 'center' }}>
+                        <FormattedMessage id='layout.footer'>
+                            { txt => <span>{ txt }</span> }
+                        </FormattedMessage>
+                    </Layout.Footer>
+                </Layout>
             </React.Fragment>
         );
     }

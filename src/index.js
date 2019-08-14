@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 
 //Styles
 import './index.css';
+import 'antd/dist/antd.css';
 
 //Core imports from libraries
 
@@ -28,7 +29,6 @@ const messages = {
 
 //Setup browser locale language
 const language = navigator.language.split(/[-_]/)[0];
-
 
 render (
     <Provider store={ store() }>

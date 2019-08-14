@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //Libraries components
 import { FormattedMessage } from 'react-intl';
-import { Layout, Menu, Breadcrumb, DatePicker, Popover, Timeline, Steps } from 'antd';
+import { Layout, Menu, Breadcrumb, DatePicker, Popover, Timeline, Steps, Tree } from 'antd';
 
 //Icons
 
@@ -105,6 +105,26 @@ class Home extends React.Component {
                                 <Steps.Step title='Third' description={<FormattedMessage id='timeline.third'>{ txt => <span>{ txt }</span> }</FormattedMessage>} />
                                 <Steps.Step title='Fourth' description={<FormattedMessage id='timeline.fourth'>{ txt => <span>{ txt }</span> }</FormattedMessage>} />
                             </Steps>
+                            <br />
+                            <br />
+                            <Tree
+                                checkable
+                                defaultExpandedKeys={['0-0-0', '0-0-1']}
+                                defaultSelectedKeys={['0-0-0', '0-0-1']}
+                                defaultCheckedKeys={['0-0-0', '0-0-1']}
+                                onSelect={ (selectedKeys, info) => { console.log('selected', selectedKeys, info); }}
+                                onCheck={ (checkedKeys, info) => { console.log('onCheck', checkedKeys, info) } }
+                            >
+                                <Tree.TreeNode title="parent 1" key="0-0">
+                                <Tree.TreeNode title="parent 1-0" key="0-0-0" disabled>
+                                    <Tree.TreeNode title="leaf" key="0-0-0-0" disableCheckbox />
+                                    <Tree.TreeNode title="leaf" key="0-0-0-1" />
+                                </Tree.TreeNode>
+                                <Tree.TreeNode title="parent 1-1" key="0-0-1">
+                                    <Tree.TreeNode title={<span style={{ color: '#1890ff' }}>sss</span>} key="0-0-1-0" />
+                                </Tree.TreeNode>
+                                </Tree.TreeNode>
+                            </Tree>
                         </div>
                     </Layout.Content>
                     <Layout.Footer style={{ textAlign: 'center' }}>

@@ -14,6 +14,7 @@ import './style.scss';
 import { initState } from './actions/initState';
 
 //Components
+import MockedForm from './components/form/index';
 
 //Misc imports
 
@@ -125,6 +126,9 @@ class Home extends React.Component {
                                 </Tree.TreeNode>
                                 </Tree.TreeNode>
                             </Tree>
+                        </div>
+                        <div>
+                            <MockedForm />
                         </div>
                     </Layout.Content>
                     <Layout.Footer style={{ textAlign: 'center' }}>

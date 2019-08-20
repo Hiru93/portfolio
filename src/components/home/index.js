@@ -27,7 +27,6 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        console.log(`---- I'm on!`);
         this.initHome();
     }
 
@@ -126,8 +125,6 @@ class Home extends React.Component {
                                 </Tree.TreeNode>
                                 </Tree.TreeNode>
                             </Tree>
-                        </div>
-                        <div>
                             <MockedForm />
                         </div>
                     </Layout.Content>

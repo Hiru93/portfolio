@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //Libraries components
-import { createForm, createFormField, formShape } from 'rc-form';
+import { Input, Select, Form } from 'antd';
 
 //Icons
 
@@ -15,50 +15,70 @@ import { updateFormField } from './actions/updateFormValue';
 
 //Misc imports
 
-class Form extends React.Component {
-    static propTypes = {
-        form: formShape
-    }
+class CustomForm extends React.Component {
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
-        const { getFieldProps, getFieldError } = this.props.form;
+        const { getFieldDecorator } = this.props.form;
         return (
-            <div>
-                <div>email:</div>
-                <div>
-                    <input {...getFieldProps('email')} />
-                </div>
-                <div>name:</div>
-                <div>
-                    <input {...getFieldProps('name')} />
-                </div>
-            </div>
+            <Form layout="inline">
+                <Form.Item label="Name">
+                    { getFieldDecorator('name', {
+                        rules: [{ required: true, message: 'Name is required!' }],
+                    })(<Input />) }
+                </Form.Item>
+                <Form.Item label="Email">
+                    { getFieldDecorator('email', {
+                        rules: [{ required: true, message: 'Email is required!' }],
+                    })(<Input />) }
+                </Form.Item>
+                <Form.Item label="Friend">
+                    { getFieldDecorator('friend')(
+                        <Select style={{ width: 120 }}>
+                            <Select.Option value="jack">jack</Select.Option>
+                            <Select.Option value="jhon" disabled>jhon</Select.Option>
+                            <Select.Option value="lucy">lucy</Select.Option>
+                            <Select.Option value="peter" disabled></Select.Option>
+                        </Select>
+                    )}
+                </Form.Item>
+            </Form>
         );
     }
 }
 
-
 const MockedForm = connect((state) => {
-    console.log('state ', state);
-return {
-    formState: {
-        email: state.app.form.email,
-        name: state.app.form.name
-    },
-};
-})(createForm({
-    mapPropsToFields(props) {
-        console.log('mapPropsToFields', props);
-        return {
-            email: createFormField(props.formState.email),
-            name: createFormField(props.formState.name)
-        };
-    },
-    onFieldsChange(props, fields) {
-        console.log('onFieldsChange', Object.keys(fields));
-        console.log('onFieldsChange props ', props);
-        props.dispatch(updateFormField(Object.keys(fields)[0], fields[Object.keys(fields)[0]].value));
-    },
-})(Form));
+    return {
+        formState: {
+            email: state.app.form.email,
+            name: state.app.form.name,
+            friend: state.app.form.friend
+        },
+    };
+    })(Form.create({
+        name: 'mocked-form',
+        mapPropsToFiels(props) {
+            return {
+                name: Form.createFormField({
+                    ...props.name,
+                    value: props.name,
+                }),
+                email: Form.createFormField({
+                    ...props.email,
+                    value: props.username.value,
+                }),
+                friend: Form.createFormField({
+                    ...props.friend,
+                    value: props.username.value
+                })
+            };
+        },
+        onValuesChange(props, values) {
+            props.dispatch(updateFormField(Object.keys(values)[0], values[Object.keys(values)[0]]));
+        },
+    })(CustomForm)
+);
 
 export default MockedForm;

@@ -1,7 +1,8 @@
 import {
     UPDATE_DEFAULT_FORM,
     UPDATE_FORM_EMAIL,
-    UPDATE_FORM_NAME
+    UPDATE_FORM_NAME,
+    UPDATE_FORM_FRIEND
 } from './actionTypes';
 
 export function updateFormField(field, value) {
@@ -14,6 +15,11 @@ export function updateFormField(field, value) {
         case 'name':
             return {
                 type: UPDATE_FORM_NAME,
+                value
+            };
+        case 'friend':
+            return {
+                type: UPDATE_FORM_FRIEND,
                 value
             }
         default:

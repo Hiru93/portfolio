@@ -1,0 +1,27 @@
+.tia-card {
+    width: 400px;
+    height: 50vh;
+}
+
+.ant-card-body {
+    height: 89%;
+}
+
+.ant-form {
+    height: 100%;
+    padding-top: 50px;
+}
+
+@media only screen and (max-width: 480px) {
+    .tia-card {
+        height: 100vh;
+        width: 100vw;
+    }   
+}
+
+@media only screen and (max-width: 576px) {
+    .tia-card {
+        height: 100vh;
+        width: 100vw;
+    }   
+}

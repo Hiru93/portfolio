@@ -16,10 +16,6 @@ import { updateFormField } from './actions/updateFormValue';
 //Misc imports
 
 class CustomForm extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
@@ -51,11 +47,9 @@ class CustomForm extends React.Component {
 
 const MockedForm = connect((state) => {
     return {
-        formState: {
-            email: state.app.form.email,
-            name: state.app.form.name,
-            friend: state.app.form.friend
-        },
+        email: state.app.form.email,
+        name: state.app.form.name,
+        friend: state.app.form.friend,
     };
     })(Form.create({
         name: 'mocked-form',
@@ -67,11 +61,11 @@ const MockedForm = connect((state) => {
                 }),
                 email: Form.createFormField({
                     ...props.email,
-                    value: props.username.value,
+                    value: props.email,
                 }),
                 friend: Form.createFormField({
                     ...props.friend,
-                    value: props.username.value
+                    value: props.friend
                 })
             };
         },

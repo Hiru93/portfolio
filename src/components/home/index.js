@@ -12,7 +12,9 @@ import {
     Timeline, 
     Steps, 
     Tree,
-    Cascader } from 'antd';
+    Cascader,
+    Button 
+} from 'antd';
 
 //Icons
 
@@ -195,7 +197,7 @@ class Home extends React.Component {
                             <MockedForm />
                             <span>Hai selezionato: { selectedOpt } </span><br />
                             <Cascader options={ options } onChange={ (value, selectedOptions) => { this.changeValue(selectedOptions.map(x => x.label).join('/')); } }>
-                                <a href="#">Change option</a>
+                                <Button type="link">Change option</Button>
                             </Cascader>
                         </div>
                     </Layout.Content>

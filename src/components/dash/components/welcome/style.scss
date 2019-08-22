@@ -1,0 +1,36 @@
+.ant-row-flex, .ant-row-flex {
+    margin-bottom: 0.5em;
+}
+
+#stockImg {
+    max-width: 333px;
+    width: 100%;
+}
+
+.tia-padding-right {
+    padding-right: 24px;
+}
+
+.tia-padding-left {
+    padding-left: 24px;
+}
+
+@media only screen and (max-width: 480px) {
+    #imgContainer {
+        margin: 24px 0;
+    }
+
+    .tia-padding-right, .tia-padding-left {
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    #imgContainer {
+        margin: 24px 0;
+    }
+
+    .tia-padding-right, .tia-padding-left {
+        padding: 0;
+    }
+}

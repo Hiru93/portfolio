@@ -5,5 +5,14 @@
     "timeline.first": "Sono il primo punto della timeline e sono anche localizzato",
     "timeline.second": "Sono il secondo punto della timeline e sono anche localizzato",
     "timeline.third": "Sono il terzo punto della timeline e sono anche localizzato",
-    "timeline.fourth": "Sono il quarto punto della timeline e sono anche localizzato"
+    "timeline.fourth": "Sono il quarto punto della timeline e sono anche localizzato",
+    "dash.menu.chart": "Overview",
+    "dash.menu.settings": "Impostazioni per l'utente",
+    "dash.menu.user": "Informazioni per l'utente",
+    "dash.menu.companies": "Le compagnie",
+    "dash.menu.companies.company-1": "Compagnia #1",
+    "dash.menu.companies.company-2": "Compagnia #2",
+    "dash.menu.companies.company-3": "Compagnia #3",
+    "dash.menu.documents": "Pratiche",
+    "dash.title": "Bentornato Bill"
 }

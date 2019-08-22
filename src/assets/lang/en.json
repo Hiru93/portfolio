@@ -5,5 +5,14 @@
     "timeline.first": "I'm the first timeline element and i'm localized too",
     "timeline.second": "I'm the second timeline element and i'm localized too",
     "timeline.third": "I'm the third timeline element and i'm localized too",
-    "timeline.fourth": "I'm the fourth timeline element and i'm localized too"
+    "timeline.fourth": "I'm the fourth timeline element and i'm localized too",
+    "dash.menu.chart": "Overview",
+    "dash.menu.settings": "User settings",
+    "dash.menu.user": "User info",
+    "dash.menu.companies": "Our companies",
+    "dash.menu.companies.company-1": "Company #1",
+    "dash.menu.companies.company-2": "Company #2",
+    "dash.menu.companies.company-3": "Company #3",
+    "dash.menu.documents": "Documents",
+    "dash.title": "Welcome back Bill"
 }

@@ -3,7 +3,16 @@ import { connect } from 'react-redux';
 
 //Libraries components
 import { FormattedMessage } from 'react-intl';
-import { Layout, Menu, Breadcrumb, DatePicker, Popover, Timeline, Steps, Tree } from 'antd';
+import { 
+    Layout, 
+    Menu, 
+    Breadcrumb, 
+    DatePicker, 
+    Popover, 
+    Timeline, 
+    Steps, 
+    Tree,
+    Cascader } from 'antd';
 
 //Icons
 
@@ -12,6 +21,7 @@ import './style.scss';
 
 //Actions
 import { initState } from './actions/initState';
+import { changeOption } from './actions/changeOpt';
 
 //Components
 import MockedForm from './components/form/index';
@@ -24,13 +34,20 @@ class Home extends React.Component {
         super(props);
 
         this.initHome = this.props.initHome.bind(this);
+        this.changeOpt = this.props.changeOpt.bind(this);
     }
 
     componentDidMount() {
         this.initHome();
     }
 
+    changeValue(opt) {
+        console.log('*** ', opt);
+        this.changeOpt(opt);
+    }
+
     render() {
+        const { selectedOpt } = this.props;
 
         const content = (
             <div>
@@ -39,6 +56,57 @@ class Home extends React.Component {
                 <p><FormattedMessage id='popover.body'>{ txt => <span>{ txt }</span> }</FormattedMessage></p>
             </div>
         );
+
+        const options = [{
+            value: 'step-1',
+            label: 'Step 1',
+            children: [{
+                value: 'step-1-a',
+                label: 'Child 1',
+                children: [{
+                    value: 'step-1-a-a',
+                    label: 'Inner child 1'
+                },{
+                    value: 'step-1-a-b',
+                    label: 'Inner child 2'
+                },{
+                    value: 'step-1-a-c',
+                    label: 'Inner child 3'
+                },{
+                    value: 'step-1-a-d',
+                    label: 'Inner child 4'
+                }]
+            },{
+                value: 'step-1-b',
+                label: 'Child 2',
+                children: [{
+                    value: 'step-1-b-a',
+                    label: 'Inner child 1'
+                },{
+                    value: 'step-1-b-b',
+                    label: 'Inner child 2'
+                },{
+                    value: 'step-1-b-c',
+                    label: 'Inner child 3'
+                },{
+                    value: 'step-1-b-d',
+                    label: 'Inner child 4'
+                },{
+                    value: 'step-1-b-e',
+                    label: 'Inner child 5'
+                },{
+                    value: 'step-1-b-f',
+                    label: 'Inner child 6'
+                }]
+            }]
+        }, {
+            value: 'step-2',
+            label: 'Step 2',
+            children: [{
+                value: 'step-2-a',
+                label: 'Child 2'
+            }]
+        }];
 
         return (
             <React.Fragment>
@@ -126,6 +194,10 @@ class Home extends React.Component {
                                 </Tree.TreeNode>
                             </Tree>
                             <MockedForm />
+                            <span>Hai selezionato: { selectedOpt } </span><br />
+                            <Cascader options={ options } onChange={ (value, selectedOptions) => { this.changeValue(selectedOptions.map(x => x.label).join('/')); } }>
+                                <a href="#">Change option</a>
+                            </Cascader>
                         </div>
                     </Layout.Content>
                     <Layout.Footer style={{ textAlign: 'center' }}>
@@ -141,7 +213,8 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        initialState: state.initialState
+        initialState: state.app.home.initState,
+        selectedOpt: state.app.home.selectedOpt
     };
 };
 
@@ -149,8 +222,13 @@ const mapDispatchToProps = dispatch => {
     const initHome = () => {
         dispatch(initState());
     }
+
+    const changeOpt = (optValue) => {
+        dispatch(changeOption(optValue));
+    }
     return {
-        initHome
+        initHome,
+        changeOpt
     };
 };
 

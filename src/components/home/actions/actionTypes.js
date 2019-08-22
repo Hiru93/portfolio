@@ -1,1 +1,2 @@
 export const GET_INITIAL_STATE = 'GET_INITIAL_STATE';
+export const CHANGE_OPT = 'CHANGE_OPT';

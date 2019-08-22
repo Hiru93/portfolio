@@ -61,7 +61,9 @@ class LoginForm extends React.Component {
                         type="flex" 
                         justify="space-around" 
                         align="middle">
-                        <Button type="primary" onClick={ () => { console.log('--- yo yo ', this); } }>Login</Button>
+                        <Button type="primary" onClick={ () => { console.log('--- yo yo ', this); } }>
+                            <a href="/user-panel">Login</a>
+                        </Button>
                     </Col>
                 </Row>
             </Form>

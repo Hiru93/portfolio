@@ -28,7 +28,6 @@ import MockedForm from './components/form/index';
 
 //Misc imports
 
-
 class Home extends React.Component {
     constructor(props) {
         super(props);

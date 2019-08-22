@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route,  Switch } from 'react-router-dom';
 //Components
 import Home from '../components/home/index';
 import Login from '../components/login/index';
+import UserDash from '../components/dash/index';
 
 //Style
 import './App.scss';
@@ -17,6 +18,7 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path='/' component={ Home } />
                     <Route exact path='/mock-login' component={ Login } />
+                    <Route exact path='/user-panel' component={ UserDash } />
                 </Switch>
             </Router>
         );

@@ -12,9 +12,11 @@ import './style.scss'
 
 //Actions
 import { setSiderStatus } from './actions/setSiderStatus';
+import { setKey } from './actions/selectedKey';
 
 //Components
 import WelcomeComp from './components/welcome/index';
+import Charts from './components/chart/index';
 
 //Misc imports
 
@@ -23,6 +25,7 @@ class Dash extends React.Component {
         super(props);
 
         this.changeSiderStatus = this.props.changeSiderStatus.bind(this);
+        this.changeKey = this.props.changeKey.bind(this);
     }
 
     onComponentDidMount() {
@@ -31,6 +34,10 @@ class Dash extends React.Component {
 
     onCollapse(status) {
         this.changeSiderStatus(!status);
+    }
+
+    selectedKey(item) {
+        this.changeKey(item);
     }
 
     render() {
@@ -55,8 +62,7 @@ class Dash extends React.Component {
                             {( () => {
                                 switch(selectedKey) {
                                     case '1':
-                                        // return <Charts />;
-                                        return <div></div>
+                                        return <Charts />;
                                     case '2':
                                         // return <Settings />;
                                         return <div></div>
@@ -95,7 +101,7 @@ class Dash extends React.Component {
                       }}
                 >
                     <div className="logo" />
-                    <Menu theme="dark" mode="inline">
+                    <Menu theme="dark" mode="inline" onClick={ (item) => this.selectedKey(item.key) }>
                         <Menu.Item key="1">
                             <Icon type="pie-chart" />
                             <span><FormattedMessage id='dash.menu.chart'>{ txt => <span>{ txt }</span> }</FormattedMessage></span>
@@ -145,10 +151,15 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     const changeSiderStatus = status => {
         dispatch(setSiderStatus(status));
-    }
+    };
+
+    const changeKey = key => {
+        dispatch(setKey(key));
+    };
 
     return {
-        changeSiderStatus
+        changeSiderStatus,
+        changeKey
     }
 }
 

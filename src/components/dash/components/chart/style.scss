@@ -1,0 +1,19 @@
+.chart-container {
+    min-height: 200px;
+}
+
+.chart-container > div {
+    min-height: 200px;
+}
+
+@media only screen and (max-width: 480px) {
+    .recharts-responsive-container {
+        width: 100%!important;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .recharts-responsive-container {
+        width: 100%!important;
+    }
+}
